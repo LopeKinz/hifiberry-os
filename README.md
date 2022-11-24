@@ -2,6 +2,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # HiFiBerryOS
 
+Diese Software ist Open-Source und frei zur verwendug und modifizierung. Diese Software wird für das Oberstufenprojekt 2022-2023 BS-ELGS Verwendet.
+Alle Modifikationen dieser Software wurden durch @LopeKinz Programmiert. Jegliche Fehler und Crashes sind nicht ausgeschlossen!
+
+Alle Rechte gehen an @HifiBerry die dieses Projekt Seit jahren ins Laufen Bringen!
+
+
 HiFiBerryOS is our version of a minimal Linux distribution optimized for audio playback. 
 The goal isn't to add as much functionality as possible, but to keep it small. Therefore, 
 it is based on Buildroot and it's not possible to use package managers to add more 
