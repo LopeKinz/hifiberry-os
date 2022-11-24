@@ -8,8 +8,8 @@ PLAYING = "playing"
 
 mpris = None
 
-MPRIS_NEXT = "Next"
-MPRIS_PREV = "Previous"
+MPRIS_NEXT = "Weiter"
+MPRIS_PREV = "Zurück"
 MPRIS_PAUSE = "Pause"
 MPRIS_PLAYPAUSE = "PlayPause"
 MPRIS_STOP = "Stop"
