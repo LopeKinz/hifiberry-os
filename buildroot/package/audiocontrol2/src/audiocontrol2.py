@@ -6,9 +6,18 @@ import logging
 from mpris import MPRISController
 from metadata import MetadataConsole, MetadataScrobbler
 from webserver import AudioControlWebserver
+import discord
 
 mpris = MPRISController()
 
+Client = discod.client(prefix="musi.",help_command=NONE)
+
+@Client.Event
+async def on_startup():
+    logging.info("Discord Bot Started!")
+    
+
+    
 
 def pause_all(signalNumber=None, frame=None):
     """
@@ -88,5 +97,16 @@ def main():
     # mpris.print_players()
     mpris.main_loop()
 
+
+    
+@Client.Command()
+async def pause_all(ctx):
+    await ctx.send("Paused Everything")
+    pause_all()
+
+@Client.Command()
+async def next(ctx):
+    await ctx.send("Playing Next Song")
+    
 
 main()
