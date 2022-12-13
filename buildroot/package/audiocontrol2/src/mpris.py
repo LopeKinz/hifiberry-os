@@ -4,7 +4,7 @@ import logging
 
 from metadata import Metadata
 
-PLAYING = "playing"
+PLAYING = "Spielt Gerade"
 
 mpris = None
 
