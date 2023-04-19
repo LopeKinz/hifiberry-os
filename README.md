@@ -7,6 +7,8 @@ Alle Modifikationen dieser Software wurden durch @LopeKinz Programmiert. Jeglich
 
 Alle Rechte gehen an @HifiBerry die dieses Projekt Seit jahren ins Laufen Bringen!
 
+Alle Änderungen die ich vorgenommen habe hier: [Commits](https://github.com/LopeKinz/hifiberry-os/compare/hifiberry:hifiberry-os:master...master)
+
 ---------------------------
 
 HiFiBerryOS is our version of a minimal Linux distribution optimized for audio playback. 
