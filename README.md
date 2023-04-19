@@ -10,7 +10,9 @@ Alle Rechte gehen an @HifiBerry die dieses Projekt Seit jahren ins Laufen Bringe
 Alle Änderungen die ich vorgenommen habe hier: [Commits](https://github.com/LopeKinz/hifiberry-os/compare/hifiberry:hifiberry-os:master...master)
 
 Weiterer Code : 
+
 [Raspberry Pi Debug Tools](https://github.com/LopeKinz/rapsberry_debug_boot)
+
 [Internet Test Script](https://github.com/LopeKinz/Internet-Tester)                
 
 ---------------------------
