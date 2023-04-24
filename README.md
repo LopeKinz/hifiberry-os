@@ -9,7 +9,7 @@ Alle Rechte gehen an @HifiBerry die dieses Projekt Seit jahren ins Laufen Bringe
 
 Alle Änderungen die ich vorgenommen habe hier: [Commits](https://github.com/LopeKinz/hifiberry-os/compare/hifiberry:hifiberry-os:master...master)
 
-Weiterer Code : 
+Weiterer Code den ich Programmiert habe : 
 
 [BeoCreate Plugin](https://github.com/LopeKinz/pi_info_beocreate)
 
