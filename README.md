@@ -11,6 +11,8 @@ Alle Änderungen die ich vorgenommen habe hier: [Commits](https://github.com/Lop
 
 Weiterer Code : 
 
+[BeoCreate Plugin](https://github.com/LopeKinz/pi_info_beocreate)
+
 [Raspberry Pi Debug Tools](https://github.com/LopeKinz/rapsberry_debug_boot)
 
 [Internet Test Script](https://github.com/LopeKinz/Internet-Tester)                
