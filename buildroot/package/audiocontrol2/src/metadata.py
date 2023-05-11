@@ -44,8 +44,7 @@ class Metadata:
             self.title = title
 
     def __str__(self):
-        return "{}: {} ({}) {}".format(self.artist, self.title,
-                                       self.albumTitle, self.artUrl)
+        return f"{self.artist}: {self.title} ({self.albumTitle}) {self.artUrl}"
 
 
 class MetadataDisplay:
@@ -61,7 +60,6 @@ class MetadataConsole(MetadataDisplay):
 
     def __init__(self):
         super()
-        pass
 
     def metadata(self, metadata):
         print("{:16s}: {}".format(metadata.playerName, metadata))
@@ -91,13 +89,13 @@ class MetadataScrobbler(MetadataDisplay):
                 username=lastfm_username,
                 password_hash=lastfm_password_hash)
         else:
-            raise RuntimeError("Network {} unknown".format(network))
+            raise RuntimeError(f"Network {network} unknown")
 
     def metadata(self, metadata):
         if (metadata.artist is not None) and \
-                (metadata.title is not None):
+                    (metadata.title is not None):
             try:
-                logging.info("scrobbling " + str(metadata))
+                logging.info(f"scrobbling {str(metadata)}")
                 unix_timestamp = int(time.mktime(
                     datetime.datetime.now().timetuple()))
                 self.network.scrobble(artist=metadata.artist,

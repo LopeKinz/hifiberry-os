@@ -61,10 +61,11 @@ def parse_config():
     scrobbler_username = config.get("scrobbler", "scrobbler-username")
     scrobbler_password = config.get("scrobbler", "scrobbler-password")
 
-    if (scrobbler_apikey is not None) and \
-        (scrobbler_apisecret is not None) and \
-        (scrobbler_apisecret is not None) and \
-            (scrobbler_password is not None):
+    if (
+        scrobbler_apikey is not None
+        and scrobbler_apisecret is not None
+        and scrobbler_password is not None
+    ):
         try:
             scrobbler = MetadataScrobbler(scrobbler_apikey,
                                           scrobbler_apisecret,

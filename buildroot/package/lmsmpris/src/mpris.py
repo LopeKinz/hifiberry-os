@@ -27,10 +27,7 @@ def array_to_string(arr):
     res = ""
     for part in arr:
         res = res + part + ", "
-    if len(res) > 1:
-        return res[:-2]
-    else:
-        return ""
+    return res[:-2] if len(res) > 1 else ""
 
 
 class PlayerState:
@@ -40,10 +37,7 @@ class PlayerState:
 
     def __init__(self, state="unknown", metadata=None):
         self.state = state
-        if metadata is not None:
-            self.metadata = metadata
-        else:
-            self.metadata = Metadata()
+        self.metadata = metadata if metadata is not None else Metadata()
 
     def __str__(self):
         return self.state + str(self.metadata)
@@ -83,9 +77,9 @@ class MPRISController:
             proxy = self.bus.get_object(name, "/org/mpris/MediaPlayer2")
             device_prop = dbus.Interface(
                 proxy, "org.freedesktop.DBus.Properties")
-            state = device_prop.Get("org.mpris.MediaPlayer2.Player",
-                                    "PlaybackStatus")
-            return state
+            return device_prop.Get(
+                "org.mpris.MediaPlayer2.Player", "PlaybackStatus"
+            )
         except:
             return None
 
@@ -147,18 +141,16 @@ class MPRISController:
             logging.debug(e)
 
     def mpris_command(self, playername, command):
-        if command in mpris_commands:
-            proxy = self.bus.get_object(playername,
-                                        "/org/mpris/MediaPlayer2")
-            player = dbus.Interface(
-                proxy, dbus_interface='org.mpris.MediaPlayer2.Player')
+        if command not in mpris_commands:
+            raise RuntimeError(f"MPRIS command {command} not supported")
+        proxy = self.bus.get_object(playername,
+                                    "/org/mpris/MediaPlayer2")
+        player = dbus.Interface(
+            proxy, dbus_interface='org.mpris.MediaPlayer2.Player')
 
-            run_command = getattr(player, command,
-                                  lambda: "Unknown command")
-            return run_command()
-        else:
-            raise RuntimeError("MPRIS command {} not supported".format(
-                command))
+        run_command = getattr(player, command,
+                              lambda: "Unknown command")
+        return run_command()
 
     def pause_inactive(self, active_player):
         """
@@ -167,8 +159,8 @@ class MPRISController:
         """
         for p in self.state_table:
             if (p != active_player) and \
-                    (self.state_table[p].state == PLAYING):
-                logging.info("Pausing " + self.playername(p))
+                        (self.state_table[p].state == PLAYING):
+                logging.info(f"Pausing {self.playername(p)}")
                 self.mpris_command(p, MPRIS_PAUSE)
 
     def pause_all(self):
@@ -206,7 +198,7 @@ class MPRISController:
                 try:
                     state = self.retrieveState(p).lower()
                 except:
-                    logging.info("Got no state from " + p)
+                    logging.info(f"Got no state from {p}")
                     state = "unknown"
                 self.state_table[p].state = state
 
@@ -215,18 +207,15 @@ class MPRISController:
                 if state == PLAYING:
                     if (p not in active_players):
                         new_player_started = p
-                        active_players.add(p)
-
+                        active_players.add(new_player_started)
                     md_old = self.state_table[p].metadata
                     md = self.retrieveMeta(p)
 
                     self.state_table[p].metadata = md
-                    if md is not None:
-                        if not(md.sameSong(md_old)):
-                            self.metadata_notify(md)
-                else:
-                    if p in active_players:
-                        active_players.remove(p)
+                    if md is not None and not (md.sameSong(md_old)):
+                        self.metadata_notify(md)
+                elif p in active_players:
+                    active_players.remove(p)
 
             if new_player_started is not None:
                 if self.auto_pause:

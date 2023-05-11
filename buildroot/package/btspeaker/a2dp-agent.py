@@ -35,7 +35,7 @@ class Agent(dbus.service.Object):
     @dbus.service.method(AGENT_INTERFACE,
                          in_signature="os", out_signature="")
     def AuthorizeService(self, device, uuid):
-        print("AuthorizeService (%s, %s)" % (device, uuid))
+        print(f"AuthorizeService ({device}, {uuid})")
         if uuid == "0000110d-0000-1000-8000-00805f9b34fb":
             print("Authorized A2DP Service")
             return
@@ -45,13 +45,13 @@ class Agent(dbus.service.Object):
     @dbus.service.method(AGENT_INTERFACE,
                          in_signature="o", out_signature="s")
     def RequestPinCode(self, device):
-        print("RequestPinCode (%s)" % (device))
+        print(f"RequestPinCode ({device})")
         return "0000"
 
     @dbus.service.method(AGENT_INTERFACE,
                          in_signature="o", out_signature="u")
     def RequestPasskey(self, device):
-        print("RequestPasskey (%s)" % (device))
+        print(f"RequestPasskey ({device})")
         return dbus.UInt32("password")
 
     @dbus.service.method(AGENT_INTERFACE,
@@ -63,7 +63,7 @@ class Agent(dbus.service.Object):
     @dbus.service.method(AGENT_INTERFACE,
                          in_signature="os", out_signature="")
     def DisplayPinCode(self, device, pincode):
-        print("DisplayPinCode (%s, %s)" % (device, pincode))
+        print(f"DisplayPinCode ({device}, {pincode})")
 
     @dbus.service.method(AGENT_INTERFACE,
                          in_signature="ou", out_signature="")
@@ -74,7 +74,7 @@ class Agent(dbus.service.Object):
     @dbus.service.method(AGENT_INTERFACE,
                          in_signature="o", out_signature="")
     def RequestAuthorization(self, device):
-        print("RequestAuthorization (%s)" % (device))
+        print(f"RequestAuthorization ({device})")
         raise Rejected("Pairing rejected")
 
     @dbus.service.method(AGENT_INTERFACE,
